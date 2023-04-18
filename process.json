@@ -1,0 +1,44 @@
+{
+  "apps": [
+    {
+      "script": "app.js",
+      "watch": true,
+      "name": "app1",
+      "args": [6001],
+      "out_file": "~/.pm2/logs/view/out.log",
+      "error_file": "~/.pm2/logs/view/err.log",
+      "merge_logs": true,
+      "log_date_firmat": "YYYY-MM-DD HH:mm Z"
+    },
+    {
+      "script": "app.js",
+      "watch": true,
+      "name": "app2",
+      "args": [6002],
+      "out_file": "~/.pm2/logs/view/out.log",
+      "error_file": "~/.pm2/logs/view/err.log",
+      "merge_logs": true,
+      "log_date_firmat": "YYYY-MM-DD HH:mm Z"
+    },
+    {
+      "script": "app.js",
+      "watch": true,
+      "name": "app3",
+      "args": [6003],
+      "out_file": "~/.pm2/logs/view/out.log",
+      "error_file": "~/.pm2/logs/view/err.log",
+      "merge_logs": true,
+      "log_date_firmat": "YYYY-MM-DD HH:mm Z"
+    },
+    {
+      "script": "app.js",
+      "watch": true,
+      "name": "app4",
+      "args": [6004],
+      "out_file": "~/.pm2/logs/view/out.log",
+      "error_file": "~/.pm2/logs/view/err.log",
+      "merge_logs": true,
+      "log_date_firmat": "YYYY-MM-DD HH:mm Z"
+    }
+  ]
+}
