@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Socket.io Example</title>
+  </head>
+  <body>
+    <h1></h1>
+    <input type="text" id="messageInput" placeholder="Type a message..." />
+    <button id="sendButton">Send</button>
+
+    <ul id="messageList"></ul>
+
+    <script src="https://cdn.socket.io/4.6.0/socket.io.min.js" integrity="sha384-c79GN5VsunZvi+Q/WObgk2in0CbZsHnjEqvFxC5DxHn9lTfNce2WW6h2pH6u/kF+" crossorigin="anonymous"></script>
+    <script>
+      const socket = io("/", {transports: ["polling"]});
+
+      const head = document.querySelector("h1");
+      const messageList = document.getElementById("messageList");
+      const messageInput = document.getElementById("messageInput");
+      const sendButton = document.getElementById("sendButton");
+
+      sendButton.addEventListener("click", () => {
+        const message = messageInput.value.trim();
+        if (message) {
+          socket.emit("message", message);
+          messageInput.value = "";
+        }
+      });
+
+      socket.on("message", (data) => {
+        const li = document.createElement("li");
+        li.textContent = data;
+        messageList.appendChild(li);
+      });
+
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "/head");
+
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          const response = JSON.parse(xhr.responseText);
+          console.log(response);
+          head.textContent = response;
+        } else {
+          console.error(`Error: ${xhr.status} ${xhr.statusText}`);
+        }
+      };
+
+      xhr.onerror = () => {
+        console.error("Request failed");
+      };
+
+      xhr.send();
+
+    </script>
+  </body>
+</html>
